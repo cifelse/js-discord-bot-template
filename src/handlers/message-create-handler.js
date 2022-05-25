@@ -3,8 +3,6 @@
  * @param {Message} message the message to be examined.
  */
  export async function messageCreateHandler(message) {
-
     // Add your Program here
-
-
+    
 }

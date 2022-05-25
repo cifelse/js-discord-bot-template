@@ -11,6 +11,6 @@ export async function execute(interaction, client) {
 
 
 
-
+    // This is a temporary reply
     await interaction.reply({content: `Pong!`});
 }

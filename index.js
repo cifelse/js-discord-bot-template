@@ -1,10 +1,9 @@
 import { Client, Collection, Intents } from 'discord.js';
-import { messageReactionAddHandler } from "./src/handlers/messageReactionAddHandler.js"
-import { messageCreateHandler } from "./src/handlers/messageCreateHandler.js";
-import { buttonHandler } from "./src/handlers/buttonHandler.js"
-import { startJobs } from "./src/handlers/jobHandler.js" 
-import { keys } from './src/utils/keys.js'
-import { runTestScripts } from './src/handlers/testsHandler.js';
+import { messageReactionAddHandler } from "./src/handlers/message-reaction-add-handler.js";
+import { messageCreateHandler } from "./src/handlers/message-create-handler.js";
+import { buttonHandler } from "./src/handlers/button-handler.js";
+import { startJobs } from "./src/handlers/job-handler.js";
+import { keys } from "./src/utils/keys.js";
 import fs from 'fs';
 import 'dotenv/config';
 
@@ -28,7 +27,6 @@ for (const file of commandFiles) {
 	const command = await import(`./src/commands/${file}`);
 	client.commands.set(command.data.name, command);
 }
-
 
 // Listening for messages sent
 client.on('messageCreate', message => {
@@ -58,16 +56,15 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.once('ready', () => {
-    console.log(`Cif Lite: Online and Ready as ${client.user.tag}`);
+    console.log(`Discord Bot: Online and Ready as ${client.user.tag}`);
 
-    // Retrieve Concorde
-    const guild = client.guilds.cache.get(keys.hangar.id);
+    // Retrieve Specific Guild
+    const guild = client.guilds.cache.get(keys.guild.id);
     if (!concorde) {
-        console.log(`Chase: I can't find Concorde. Double check the Guild ID.`);
+        console.log(`Discord Bot: I can't find the Guild. Double check the Guild ID.`);
         return;
     }
 
-    runTestScripts(guild);
     startJobs(guild);
 });
 
