@@ -1,2 +1,2 @@
-# discord-tester
-A small program for testing your Discord Bots.
+# Discord Bot Framework
+When creating a Discord bot, you may use this framework for faster building
