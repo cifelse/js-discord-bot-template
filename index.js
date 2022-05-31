@@ -60,7 +60,7 @@ client.once('ready', () => {
 
     // Retrieve Specific Guild
     const guild = client.guilds.cache.get(keys.guild.id);
-    if (!concorde) {
+    if (!guild) {
         console.log(`Discord Bot: I can't find the Guild. Double check the Guild ID.`);
         return;
     }
